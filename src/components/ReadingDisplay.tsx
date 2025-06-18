@@ -70,108 +70,108 @@ ${cardData.interpretation}`;
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h3 className="text-xl font-bold text-purple-800">鑑定結果</h3>
+    <div className="space-y-4 md:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0">
+        <h3 className="text-lg md:text-xl font-bold text-purple-800">鑑定結果</h3>
         <button
           onClick={onRegenerate}
           disabled={isRegenerating}
-          className="px-4 py-2 text-sm font-medium text-purple-700 bg-white border border-purple-300 rounded-lg hover:bg-purple-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-3 sm:px-4 py-2 text-sm font-medium text-purple-700 bg-white border border-purple-300 rounded-lg hover:bg-purple-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           {isRegenerating ? '再生成中...' : '再生成'}
         </button>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-4 md:space-y-6">
         {/* カードA */}
-        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
-          <div className="space-y-4">
+        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-3 sm:p-4 md:p-6 border border-purple-200">
+          <div className="space-y-3 md:space-y-4">
             <div className="text-center">
-              <h4 className="text-2xl font-bold text-purple-800 mb-2">
+              <h4 className="text-xl sm:text-2xl font-bold text-purple-800 mb-2">
                 🔮 Aを選んだあなたへ
               </h4>
-              <p className="text-lg text-purple-700 mb-4">
+              <p className="text-base sm:text-lg text-purple-700 mb-2 sm:mb-4">
                 🃏カードの絵柄：{reading.cardA.cardName}
               </p>
               <div className="text-sm">━━━━━━━━━━</div>
             </div>
             
-            <div className="bg-white/75 rounded-lg p-6 shadow-sm">
-              <div className="text-purple-800 leading-relaxed whitespace-pre-line text-left">
+            <div className="bg-white/75 rounded-lg p-3 sm:p-4 md:p-6 shadow-sm">
+              <div className="text-purple-800 leading-relaxed whitespace-pre-line text-left text-sm sm:text-base">
                 {formatInterpretation(reading.cardA.interpretation)}
               </div>
             </div>
 
-            <div className="text-center pt-4 border-t border-purple-200">
+            <div className="text-center pt-2 sm:pt-4 border-t border-purple-200">
               <CopyButton
                 text={getSelectedInterpretationText('A')}
                 label="この鑑定をコピー"
-                className="mb-2"
+                className="mb-2 w-full sm:w-auto"
               />
             </div>
           </div>
         </div>
 
         {/* カードB */}
-        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
-          <div className="space-y-4">
+        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-3 sm:p-4 md:p-6 border border-purple-200">
+          <div className="space-y-3 md:space-y-4">
             <div className="text-center">
-              <h4 className="text-2xl font-bold text-purple-800 mb-2">
+              <h4 className="text-xl sm:text-2xl font-bold text-purple-800 mb-2">
                 🔮 Bを選んだあなたへ
               </h4>
-              <p className="text-lg text-purple-700 mb-4">
+              <p className="text-base sm:text-lg text-purple-700 mb-2 sm:mb-4">
                 🃏カードの絵柄：{reading.cardB.cardName}
               </p>
               <div className="text-sm">━━━━━━━━━━</div>
             </div>
             
-            <div className="bg-white/75 rounded-lg p-6 shadow-sm">
-              <div className="text-purple-800 leading-relaxed whitespace-pre-line text-left">
+            <div className="bg-white/75 rounded-lg p-3 sm:p-4 md:p-6 shadow-sm">
+              <div className="text-purple-800 leading-relaxed whitespace-pre-line text-left text-sm sm:text-base">
                 {formatInterpretation(reading.cardB.interpretation)}
               </div>
             </div>
 
-            <div className="text-center pt-4 border-t border-purple-200">
+            <div className="text-center pt-2 sm:pt-4 border-t border-purple-200">
               <CopyButton
                 text={getSelectedInterpretationText('B')}
                 label="この鑑定をコピー"
-                className="mb-2"
+                className="mb-2 w-full sm:w-auto"
               />
             </div>
           </div>
         </div>
 
         {/* カードC */}
-        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
-          <div className="space-y-4">
+        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-3 sm:p-4 md:p-6 border border-purple-200">
+          <div className="space-y-3 md:space-y-4">
             <div className="text-center">
-              <h4 className="text-2xl font-bold text-purple-800 mb-2">
+              <h4 className="text-xl sm:text-2xl font-bold text-purple-800 mb-2">
                 🔮 Cを選んだあなたへ
               </h4>
-              <p className="text-lg text-purple-700 mb-4">
+              <p className="text-base sm:text-lg text-purple-700 mb-2 sm:mb-4">
                 🃏カードの絵柄：{reading.cardC.cardName}
               </p>
               <div className="text-sm">━━━━━━━━━━</div>
             </div>
             
-            <div className="bg-white/75 rounded-lg p-6 shadow-sm">
-              <div className="text-purple-800 leading-relaxed whitespace-pre-line text-left">
+            <div className="bg-white/75 rounded-lg p-3 sm:p-4 md:p-6 shadow-sm">
+              <div className="text-purple-800 leading-relaxed whitespace-pre-line text-left text-sm sm:text-base">
                 {formatInterpretation(reading.cardC.interpretation)}
               </div>
             </div>
 
-            <div className="text-center pt-4 border-t border-purple-200">
+            <div className="text-center pt-2 sm:pt-4 border-t border-purple-200">
               <CopyButton
                 text={getSelectedInterpretationText('C')}
                 label="この鑑定をコピー"
-                className="mb-2"
+                className="mb-2 w-full sm:w-auto"
               />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="pt-4 border-t border-purple-200">
+      <div className="pt-2 sm:pt-4 border-t border-purple-200">
         <CopyButton
           text={getAllInterpretationsText()}
           label="全ての鑑定文をコピー"

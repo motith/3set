@@ -348,27 +348,27 @@ ${ending}`
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-100 to-rose-100">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
         {/* ヘッダー */}
-        <header className="text-center mb-8">
+        <header className="text-center mb-4 sm:mb-8">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <SparklesIcon className="w-8 h-8 text-purple-600" />
-            <h1 className="text-3xl font-bold text-purple-800">タロット鑑定支援アプリ</h1>
-            <SparklesIcon className="w-8 h-8 text-purple-600" />
+            <SparklesIcon className="w-6 sm:w-8 h-6 sm:h-8 text-purple-600" />
+            <h1 className="text-2xl sm:text-3xl font-bold text-purple-800">タロット鑑定支援アプリ</h1>
+            <SparklesIcon className="w-6 sm:w-8 h-6 sm:h-8 text-purple-600" />
           </div>
-          <p className="text-purple-700">AIを活用した恋愛テーマ特化型タロット鑑定ツール</p>
+          <p className="text-sm sm:text-base text-purple-700">AIを活用した恋愛テーマ特化型タロット鑑定ツール</p>
           <div className="mt-2 px-4 py-2 bg-green-50 border border-green-200 rounded-lg inline-block">
             <p className="text-green-700 text-sm">✨ Gemini AI搭載：本格的なAI鑑定をお楽しみください</p>
           </div>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-8">
           {/* 入力セクション */}
-          <div className="bg-white/75 backdrop-blur-md rounded-xl p-6 shadow-lg border border-purple-100">
-            <h2 className="text-xl font-bold text-purple-800 mb-6">鑑定設定</h2>
+          <div className="bg-white/75 backdrop-blur-md rounded-xl p-4 md:p-6 shadow-lg border border-purple-100">
+            <h2 className="text-lg md:text-xl font-bold text-purple-800 mb-4 md:mb-6">鑑定設定</h2>
             
             {/* 占いテーマ入力 - タブ形式 */}
-            <div className="space-y-4 mb-6">
+            <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
               <label className="block text-sm font-medium text-purple-700">
                 占いテーマ
               </label>
@@ -377,7 +377,7 @@ ${ending}`
               <div className="flex space-x-1 bg-purple-100 rounded-lg p-1">
                 <button
                   onClick={() => handleThemeModeChange('select')}
-                  className={`flex-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                  className={`flex-1 px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-md transition-colors ${
                     themeInputMode === 'select'
                       ? 'bg-white text-purple-700 shadow-sm'
                       : 'text-purple-600 hover:text-purple-700'
@@ -387,7 +387,7 @@ ${ending}`
                 </button>
                 <button
                   onClick={() => handleThemeModeChange('text')}
-                  className={`flex-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                  className={`flex-1 px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-md transition-colors ${
                     themeInputMode === 'text'
                       ? 'bg-white text-purple-700 shadow-sm'
                       : 'text-purple-600 hover:text-purple-700'
@@ -403,7 +403,7 @@ ${ending}`
                   <select
                     value={fortuneTheme}
                     onChange={(e) => setFortuneTheme(e.target.value)}
-                    className="w-full px-3 py-2 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white/75 backdrop-blur-sm"
+                    className="w-full px-3 py-2.5 text-sm sm:text-base border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white/75 backdrop-blur-sm min-h-[40px] sm:min-h-[44px]"
                   >
                     <option value="">テーマを選択してください</option>
                     {FORTUNE_THEME_SUGGESTIONS.map((theme, index) => (
@@ -421,10 +421,10 @@ ${ending}`
                     placeholder="恋愛に関する相談内容を入力してください（50文字以内）"
                     maxLength={50}
                     rows={3}
-                    className="w-full px-3 py-2 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white/75 backdrop-blur-sm resize-none"
+                    className="w-full px-3 py-2.5 text-sm sm:text-base border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white/75 backdrop-blur-sm resize-none min-h-[80px]"
                   />
                   <div className="text-right">
-                    <span className="text-xs text-purple-600">
+                    <span className="text-xs sm:text-sm text-purple-600">
                       {fortuneTheme.length}/50文字
                     </span>
                   </div>
@@ -433,7 +433,7 @@ ${ending}`
             </div>
 
             {/* 占い師スタンス選択 */}
-            <div className="mb-6">
+            <div className="mb-4 sm:mb-6">
               <StanceSelector
                 selectedStance={selectedStance}
                 onStanceChange={setSelectedStance}
@@ -442,7 +442,7 @@ ${ending}`
             </div>
 
             {/* カード選択方法 */}
-            <div className="mb-6">
+            <div className="mb-4 sm:mb-6">
               <CardSelector
                 cardSelectionMethod={cardSelectionMethod}
                 onMethodChange={setCardSelectionMethod}
@@ -452,7 +452,7 @@ ${ending}`
 
             {/* 手動カード選択 */}
             {cardSelectionMethod === 'manual' && (
-              <div className="mb-6">
+              <div className="mb-4 sm:mb-6">
                 <ManualCardInput
                   manualCardSelections={manualCardSelections}
                   onCardSelectionChange={setManualCardSelections}
@@ -465,11 +465,11 @@ ${ending}`
             <button
               onClick={handleGenerateReading}
               disabled={isLoading || !fortuneTheme.trim() || fortuneTheme.length > 50 || (cardSelectionMethod === 'manual' && !validateManualCardSelection())}
-              className="w-full py-3 px-6 text-white bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg font-medium hover:from-pink-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="w-full py-3 px-4 sm:px-6 text-sm sm:text-base text-white bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg font-medium hover:from-pink-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl min-h-[44px] sm:min-h-[48px]"
             >
               {isLoading ? (
                 <div className="flex items-center justify-center space-x-2">
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   <span>鑑定中...</span>
                 </div>
               ) : (
@@ -486,7 +486,7 @@ ${ending}`
           </div>
 
           {/* 出力セクション */}
-          <div className="bg-white/75 backdrop-blur-md rounded-xl p-6 shadow-lg border border-purple-100">
+          <div className="bg-white/75 backdrop-blur-md rounded-xl p-4 md:p-6 shadow-lg border border-purple-100">
             {isLoading ? (
               <div className="text-center py-12">
                 <div className="w-16 h-16 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin mx-auto mb-4"></div>

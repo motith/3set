@@ -18,8 +18,8 @@ export const CopyButton: React.FC<CopyButtonProps> = ({
 
   const sizeClasses = {
     sm: 'px-2 py-1 text-xs',
-    md: 'px-3 py-2 text-sm',
-    lg: 'px-4 py-2 text-base'
+    md: 'px-3 py-2 text-xs sm:text-sm min-h-[36px] sm:min-h-[40px]',
+    lg: 'px-4 py-2 text-sm sm:text-base min-h-[40px] sm:min-h-[44px]'
   };
 
   const handleCopy = async () => {
@@ -56,8 +56,8 @@ export const CopyButton: React.FC<CopyButtonProps> = ({
       disabled={copied}
       aria-label={`${label}ボタン`}
     >
-      <CopyIcon className="w-4 h-4" />
-      <span>{copied ? 'コピー完了！' : label}</span>
+      <CopyIcon className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+      <span className="truncate">{copied ? 'コピー完了！' : label}</span>
     </button>
   );
 }; 

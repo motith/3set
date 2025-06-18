@@ -22,7 +22,7 @@ export const StanceSelector: React.FC<StanceSelectorProps> = ({
         value={selectedStance}
         onChange={(e) => onStanceChange(e.target.value as Stance)}
         disabled={disabled}
-        className="w-full px-3 py-2 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white/75 backdrop-blur-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full px-3 py-2.5 text-sm sm:text-base border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white/75 backdrop-blur-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed min-h-[40px] sm:min-h-[44px]"
       >
         {STANCES_OPTIONS.map((option) => (
           <option key={option.value} value={option.value}>
@@ -30,7 +30,7 @@ export const StanceSelector: React.FC<StanceSelectorProps> = ({
           </option>
         ))}
       </select>
-      <p className="text-xs text-purple-600">
+      <p className="text-xs sm:text-sm text-purple-600 leading-relaxed">
         {STANCES_OPTIONS.find(option => option.value === selectedStance)?.description}
       </p>
     </div>
