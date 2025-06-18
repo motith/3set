@@ -26,6 +26,37 @@ export const MAJOR_ARCANA_CARDS: MajorArcanaCard[] = [
   { id: 'world', name: '世界', nameEn: 'The World', keywords: ['完成', '達成', '調和', '旅の終わり'] }
 ];
 
+// カードIDから番号へのマッピング（0-21の番号ベース画像ファイル用）
+export const CARD_ID_TO_NUMBER: Record<string, number> = {
+  'fool': 0,
+  'magician': 1,
+  'high_priestess': 2,
+  'empress': 3,
+  'emperor': 4,
+  'hierophant': 5,
+  'lovers': 6,
+  'chariot': 7,
+  'strength': 8,
+  'hermit': 9,
+  'wheel_of_fortune': 10,
+  'justice': 11,
+  'hanged_man': 12,
+  'death': 13,
+  'temperance': 14,
+  'devil': 15,
+  'tower': 16,
+  'star': 17,
+  'moon': 18,
+  'sun': 19,
+  'judgement': 20,
+  'world': 21
+};
+
+// 番号からカードIDへのマッピング（逆引き）
+export const NUMBER_TO_CARD_ID: Record<number, string> = Object.fromEntries(
+  Object.entries(CARD_ID_TO_NUMBER).map(([id, num]) => [num, id])
+);
+
 // 占い師スタンス選択肢
 export const STANCES_OPTIONS: { value: Stance; label: string; description: string }[] = [
   { 

@@ -1,4 +1,4 @@
-import React, { useRef, useImperativeHandle, forwardRef } from 'react';
+import { useRef, useImperativeHandle, forwardRef } from 'react';
 import { ReadingOutput } from '../types';
 import { CopyButton } from './CopyButton';
 

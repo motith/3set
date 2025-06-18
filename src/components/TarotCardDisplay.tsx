@@ -1,5 +1,6 @@
 import React from 'react';
 import { SelectedCardInfo } from '../types';
+import { CARD_ID_TO_NUMBER } from '../constants';
 
 interface TarotCardDisplayProps {
   cards: SelectedCardInfo[];
@@ -11,8 +12,14 @@ export const TarotCardDisplay: React.FC<TarotCardDisplayProps> = ({
   onCardClick
 }) => {
   const getCardImagePath = (cardId: string): string => {
-    // 画像ファイル名は cardId.png の形式を想定（PNG優先）
-    return `/images/tarot-cards/${cardId}.png`;
+    // カードIDを番号に変換（0-21）
+    const cardNumber = CARD_ID_TO_NUMBER[cardId];
+    if (cardNumber === undefined) {
+      console.warn(`Unknown card ID: ${cardId}`);
+      return '/images/tarot-cards/placeholder.svg';
+    }
+    // 番号ベースの画像ファイルパス（PNG優先）
+    return `/images/tarot-cards/${cardNumber}.png`;
   };
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -21,9 +28,9 @@ export const TarotCardDisplay: React.FC<TarotCardDisplayProps> = ({
     const currentSrc = target.src;
     
     if (currentSrc.includes('.png')) {
-      target.src = currentSrc.replace('.png', '.svg');
-    } else if (currentSrc.includes('.svg')) {
-      target.src = currentSrc.replace('.svg', '.jpg');
+      target.src = currentSrc.replace('.png', '.jpg');
+    } else if (currentSrc.includes('.jpg')) {
+      target.src = currentSrc.replace('.jpg', '.svg');
     } else {
       target.src = '/images/tarot-cards/placeholder.svg';
     }
@@ -34,15 +41,15 @@ export const TarotCardDisplay: React.FC<TarotCardDisplayProps> = ({
       <h3 className="text-lg md:text-xl font-bold text-purple-800 mb-4 text-center">
         選ばれたカード
       </h3>
-      <div className="grid grid-cols-3 gap-2 sm:gap-4 max-w-md mx-auto">
-        {cards.map((card, index) => (
+      <div className="grid grid-cols-3 gap-2 sm:gap-3 max-w-xs sm:max-w-sm mx-auto">
+        {cards.map((card) => (
           <div
             key={card.position}
             className="relative group cursor-pointer transform transition-all duration-300 hover:scale-105 active:scale-95"
             onClick={() => onCardClick(card.position)}
           >
             {/* カード画像 */}
-            <div className="relative aspect-[2/3] bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg shadow-lg overflow-hidden border-2 border-purple-200 group-hover:border-purple-400 transition-colors">
+            <div className="relative aspect-[9/16] bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg shadow-lg overflow-hidden border-2 border-purple-200 group-hover:border-purple-400 transition-colors">
               <img
                 src={getCardImagePath(card.cardId)}
                 alt={card.cardName}
