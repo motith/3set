@@ -1,28 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Stance, 
-  CardSelectionMethod, 
-  ManualCardSelections, 
-  ReadingOutput, 
-  SelectedCardInfo,
-  ThemeInputMode,
-  MajorArcanaCardId 
-} from './types';
-import { 
-  MAJOR_ARCANA_CARDS, 
-  FORTUNE_THEME_SUGGESTIONS 
-} from './constants';
-import { 
-  initializeGeminiAPI, 
-  isGeminiAvailable, 
-  generateReading 
-} from './services/geminiService';
+import { useState, useEffect } from 'react';
+import { SparklesIcon } from './icons/SparklesIcon';
 import { StanceSelector } from './components/StanceSelector';
 import { CardSelector } from './components/CardSelector';
 import { ManualCardInput } from './components/ManualCardInput';
 import { ReadingDisplay } from './components/ReadingDisplay';
-import { LoadingSpinner } from './components/LoadingSpinner';
-import { SparklesIcon } from './icons/SparklesIcon';
+import { MAJOR_ARCANA_CARDS, FORTUNE_THEME_SUGGESTIONS } from './constants';
+import { generateReading, initializeGeminiAPI, isGeminiAvailable } from './services/geminiService';
+import type { 
+  Stance, 
+  CardSelectionMethod, 
+  ManualCardSelections, 
+  SelectedCardInfo, 
+  ReadingOutput,
+  MajorArcanaCardId,
+  ThemeInputMode
+} from './types';
 
 function App() {
   // 状態管理
@@ -90,7 +82,7 @@ function App() {
   };
 
   // デモ用鑑定文のパターン生成（スタンス反映版）
-  const generateDemoReading = (cards: SelectedCardInfo[], theme: string, stance: Stance): ReadingOutput => {
+  const generateDemoReading = (cards: SelectedCardInfo[], _theme: string, stance: Stance): ReadingOutput => {
     
     // カードごとの基本意味
     const cardMeanings: Record<string, string[]> = {
@@ -142,7 +134,7 @@ function App() {
       }
     };
 
-    const generateCardReading = (card: SelectedCardInfo, position: string): string => {
+    const generateCardReading = (card: SelectedCardInfo, _position: string): string => {
       const meanings = cardMeanings[card.cardId] || ['愛の可能性', '恋の発展', '心の成長', '関係の深化'];
       const selectedMeaning = meanings[Math.floor(Math.random() * meanings.length)];
       const style = stanceStyles[stance];
@@ -496,7 +488,15 @@ ${ending}`
           {/* 出力セクション */}
           <div className="bg-white/75 backdrop-blur-md rounded-xl p-6 shadow-lg border border-purple-100">
             {isLoading ? (
-              <LoadingSpinner />
+              <div className="text-center py-12">
+                <div className="w-16 h-16 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin mx-auto mb-4"></div>
+                <h3 className="text-lg font-medium text-purple-700 mb-2">
+                  鑑定中...
+                </h3>
+                <p className="text-purple-600 text-sm">
+                  AIが鑑定文を生成しています
+                </p>
+              </div>
             ) : generatedReading ? (
               <ReadingDisplay
                 reading={generatedReading}

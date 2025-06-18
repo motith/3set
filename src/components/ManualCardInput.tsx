@@ -40,7 +40,7 @@ export const ManualCardInput: React.FC<ManualCardInputProps> = ({
     setDuplicateWarning(null);
   };
 
-  const getAvailableCards = (currentPosition: keyof ManualCardSelections) => {
+  const getAvailableCards = (_currentPosition: keyof ManualCardSelections) => {
     // 重複を許可するため、すべてのカードを表示
     return MAJOR_ARCANA_CARDS;
   };
