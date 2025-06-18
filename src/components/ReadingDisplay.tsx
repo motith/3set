@@ -52,11 +52,11 @@ export const ReadingDisplay = forwardRef<ReadingDisplayRef, ReadingDisplayProps>
   };
 
   const getCardInterpretation = (card: 'A' | 'B' | 'C') => {
-    const cardData = reading[`card${card}`];
+    const cardData = card === 'A' ? reading.cardA : card === 'B' ? reading.cardB : reading.cardC;
     return {
       title: `🔮 ${card}を選んだあなたへ`,
-      cardDisplay: `🃏カードの絵柄：${cardData.cardName}`,
-      interpretation: cardData.interpretation
+      cardDisplay: `🃏カードの絵柄：${cardData.name}`,
+      interpretation: cardData.meaning
     };
   };
 
@@ -123,14 +123,14 @@ ${cardData.interpretation}`;
                 🔮 Aを選んだあなたへ
               </h4>
               <p className="text-base sm:text-lg text-purple-700 mb-2 sm:mb-4">
-                🃏カードの絵柄：{reading.cardA.cardName}
+                🃏カードの絵柄：{reading.cardA.name}
               </p>
               <div className="text-sm">━━━━━━━━━━</div>
             </div>
             
             <div className="bg-white/75 rounded-lg p-3 sm:p-4 md:p-6 shadow-sm">
               <div className="text-purple-800 leading-relaxed whitespace-pre-line text-left text-sm sm:text-base">
-                {formatInterpretation(reading.cardA.interpretation)}
+                {formatInterpretation(reading.cardA.meaning)}
               </div>
             </div>
 
@@ -155,14 +155,14 @@ ${cardData.interpretation}`;
                 🔮 Bを選んだあなたへ
               </h4>
               <p className="text-base sm:text-lg text-purple-700 mb-2 sm:mb-4">
-                🃏カードの絵柄：{reading.cardB.cardName}
+                🃏カードの絵柄：{reading.cardB.name}
               </p>
               <div className="text-sm">━━━━━━━━━━</div>
             </div>
             
             <div className="bg-white/75 rounded-lg p-3 sm:p-4 md:p-6 shadow-sm">
               <div className="text-purple-800 leading-relaxed whitespace-pre-line text-left text-sm sm:text-base">
-                {formatInterpretation(reading.cardB.interpretation)}
+                {formatInterpretation(reading.cardB.meaning)}
               </div>
             </div>
 
@@ -187,14 +187,14 @@ ${cardData.interpretation}`;
                 🔮 Cを選んだあなたへ
               </h4>
               <p className="text-base sm:text-lg text-purple-700 mb-2 sm:mb-4">
-                🃏カードの絵柄：{reading.cardC.cardName}
+                🃏カードの絵柄：{reading.cardC.name}
               </p>
               <div className="text-sm">━━━━━━━━━━</div>
             </div>
             
             <div className="bg-white/75 rounded-lg p-3 sm:p-4 md:p-6 shadow-sm">
               <div className="text-purple-800 leading-relaxed whitespace-pre-line text-left text-sm sm:text-base">
-                {formatInterpretation(reading.cardC.interpretation)}
+                {formatInterpretation(reading.cardC.meaning)}
               </div>
             </div>
 
