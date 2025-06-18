@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useImperativeHandle, forwardRef } from 'react';
 import { ReadingOutput } from '../types';
 import { CopyButton } from './CopyButton';
 
@@ -8,11 +8,40 @@ interface ReadingDisplayProps {
   isRegenerating: boolean;
 }
 
-export const ReadingDisplay: React.FC<ReadingDisplayProps> = ({
+export interface ReadingDisplayRef {
+  scrollToCard: (cardPosition: 'A' | 'B' | 'C') => void;
+}
+
+export const ReadingDisplay = forwardRef<ReadingDisplayRef, ReadingDisplayProps>(({
   reading,
   onRegenerate,
   isRegenerating
-}) => {
+}, ref) => {
+  const cardARefs = useRef<HTMLDivElement>(null);
+  const cardBRefs = useRef<HTMLDivElement>(null);
+  const cardCRefs = useRef<HTMLDivElement>(null);
+
+  useImperativeHandle(ref, () => ({
+    scrollToCard: (cardPosition: 'A' | 'B' | 'C') => {
+      const targetRef = cardPosition === 'A' ? cardARefs : 
+                       cardPosition === 'B' ? cardBRefs : cardCRefs;
+      
+      if (targetRef.current) {
+        targetRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest'
+        });
+        
+        // スクロール後にハイライト効果を追加
+        targetRef.current.classList.add('ring-4', 'ring-purple-400', 'ring-opacity-75');
+        setTimeout(() => {
+          targetRef.current?.classList.remove('ring-4', 'ring-purple-400', 'ring-opacity-75');
+        }, 2000);
+      }
+    }
+  }));
+
   const formatInterpretation = (text: string) => {
     return text.split('。').filter(sentence => sentence.trim()).map((sentence, index) => (
       <span key={index}>
@@ -84,7 +113,10 @@ ${cardData.interpretation}`;
 
       <div className="space-y-4 md:space-y-6">
         {/* カードA */}
-        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-3 sm:p-4 md:p-6 border border-purple-200">
+        <div 
+          ref={cardARefs}
+          className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-3 sm:p-4 md:p-6 border border-purple-200 transition-all duration-500"
+        >
           <div className="space-y-3 md:space-y-4">
             <div className="text-center">
               <h4 className="text-xl sm:text-2xl font-bold text-purple-800 mb-2">
@@ -113,7 +145,10 @@ ${cardData.interpretation}`;
         </div>
 
         {/* カードB */}
-        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-3 sm:p-4 md:p-6 border border-purple-200">
+        <div 
+          ref={cardBRefs}
+          className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-3 sm:p-4 md:p-6 border border-purple-200 transition-all duration-500"
+        >
           <div className="space-y-3 md:space-y-4">
             <div className="text-center">
               <h4 className="text-xl sm:text-2xl font-bold text-purple-800 mb-2">
@@ -142,7 +177,10 @@ ${cardData.interpretation}`;
         </div>
 
         {/* カードC */}
-        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-3 sm:p-4 md:p-6 border border-purple-200">
+        <div 
+          ref={cardCRefs}
+          className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-3 sm:p-4 md:p-6 border border-purple-200 transition-all duration-500"
+        >
           <div className="space-y-3 md:space-y-4">
             <div className="text-center">
               <h4 className="text-xl sm:text-2xl font-bold text-purple-800 mb-2">
@@ -180,4 +218,4 @@ ${cardData.interpretation}`;
       </div>
     </div>
   );
-}; 
+}); 

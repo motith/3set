@@ -1,0 +1,37 @@
+<svg width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="foolGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef3c7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- カード背景 -->
+  <rect width="200" height="300" rx="12" fill="url(#foolGradient)" stroke="#d97706" stroke-width="2"/>
+  
+  <!-- 装飾的な枠 -->
+  <rect x="10" y="10" width="180" height="280" rx="8" fill="none" stroke="#d97706" stroke-width="1"/>
+  
+  <!-- 愚者のシンボル -->
+  <circle cx="100" cy="80" r="25" fill="#fff" stroke="#d97706" stroke-width="2"/>
+  <circle cx="95" cy="75" r="3" fill="#d97706"/>
+  <circle cx="105" cy="75" r="3" fill="#d97706"/>
+  <path d="M90 85 Q100 95 110 85" stroke="#d97706" stroke-width="2" fill="none"/>
+  
+  <!-- 体 -->
+  <rect x="85" y="105" width="30" height="50" rx="5" fill="#fff" stroke="#d97706" stroke-width="2"/>
+  
+  <!-- 足 -->
+  <rect x="85" y="155" width="12" height="30" rx="3" fill="#d97706"/>
+  <rect x="103" y="155" width="12" height="30" rx="3" fill="#d97706"/>
+  
+  <!-- バッグ -->
+  <circle cx="130" cy="120" r="8" fill="#dc2626" stroke="#991b1b" stroke-width="1"/>
+  
+  <!-- 番号 */
+  <text x="100" y="220" text-anchor="middle" font-family="serif" font-size="24" fill="#d97706" font-weight="bold">0</text>
+  
+  <!-- カード名 */
+  <text x="100" y="245" text-anchor="middle" font-family="serif" font-size="14" fill="#92400e">THE FOOL</text>
+  <text x="100" y="265" text-anchor="middle" font-family="serif" font-size="12" fill="#92400e">愚者</text>
+</svg> 

@@ -1,0 +1,7 @@
+<svg width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="300" rx="12" fill="#fce7f3" stroke="#db2777" stroke-width="2"/>
+  <text x="100" y="150" text-anchor="middle" font-family="serif" font-size="18" fill="#db2777" font-weight="bold">VI</text>
+  <text x="100" y="180" text-anchor="middle" font-family="serif" font-size="14" fill="#be185d">THE LOVERS</text>
+  <text x="100" y="200" text-anchor="middle" font-family="serif" font-size="12" fill="#be185d">恋人</text>
+  <path d="M100 120 C95 115, 85 115, 85 125 C85 135, 100 145, 100 145 C100 145, 115 135, 115 125 C115 115, 105 115, 100 120 Z" fill="#dc2626"/>
+</svg> 

@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { SparklesIcon } from './icons/SparklesIcon';
 import { StanceSelector } from './components/StanceSelector';
 import { CardSelector } from './components/CardSelector';
 import { ManualCardInput } from './components/ManualCardInput';
-import { ReadingDisplay } from './components/ReadingDisplay';
+import { ReadingDisplay, ReadingDisplayRef } from './components/ReadingDisplay';
+import { TarotCardDisplay } from './components/TarotCardDisplay';
 import { MAJOR_ARCANA_CARDS, FORTUNE_THEME_SUGGESTIONS } from './constants';
 import { generateReading, initializeGeminiAPI, isGeminiAvailable } from './services/geminiService';
 import type { 
@@ -32,6 +33,9 @@ function App() {
   const [apiKeyError, setApiKeyError] = useState<string | null>(null);
   const [generatedReading, setGeneratedReading] = useState<ReadingOutput | null>(null);
   const [cardsUsedInReading, setCardsUsedInReading] = useState<SelectedCardInfo[]>([]);
+
+  // Refs
+  const readingDisplayRef = useRef<ReadingDisplayRef>(null);
 
   // APIキーの初期化
   useEffect(() => {
@@ -327,6 +331,13 @@ ${ending}`
     setFortuneTheme('');
   };
 
+  // カードタップ時のスクロール処理
+  const handleCardClick = (cardPosition: 'A' | 'B' | 'C') => {
+    if (readingDisplayRef.current) {
+      readingDisplayRef.current.scrollToCard(cardPosition);
+    }
+  };
+
   // APIキーエラーがある場合は専用メッセージを表示
   if (apiKeyError) {
     return (
@@ -498,11 +509,21 @@ ${ending}`
                 </p>
               </div>
             ) : generatedReading ? (
-              <ReadingDisplay
-                reading={generatedReading}
-                onRegenerate={handleRegenerateReading}
-                isRegenerating={isLoading}
-              />
+              <div className="space-y-6">
+                {/* タロットカード表示 */}
+                <TarotCardDisplay
+                  cards={cardsUsedInReading}
+                  onCardClick={handleCardClick}
+                />
+                
+                {/* 鑑定結果 */}
+                <ReadingDisplay
+                  reading={generatedReading}
+                  onRegenerate={handleRegenerateReading}
+                  isRegenerating={isLoading}
+                  ref={readingDisplayRef}
+                />
+              </div>
             ) : (
               <div className="text-center py-12">
                 <SparklesIcon className="w-16 h-16 text-purple-300 mx-auto mb-4" />

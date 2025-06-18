@@ -1,0 +1,30 @@
+<svg width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e879f9;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+  
+  <!-- カード背景 -->
+  <rect width="200" height="300" rx="12" fill="url(#cardGradient)" stroke="#8b5cf6" stroke-width="2"/>
+  
+  <!-- 装飾的な枠 -->
+  <rect x="10" y="10" width="180" height="280" rx="8" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.5"/>
+  
+  <!-- 中央のシンボル -->
+  <circle cx="100" cy="150" r="40" fill="none" stroke="#8b5cf6" stroke-width="2" opacity="0.7"/>
+  <path d="M100 120 L110 140 L100 160 L90 140 Z" fill="#8b5cf6" opacity="0.5"/>
+  
+  <!-- タロットカードテキスト -->
+  <text x="100" y="200" text-anchor="middle" font-family="serif" font-size="14" fill="#7c3aed" opacity="0.8">TAROT</text>
+  <text x="100" y="220" text-anchor="middle" font-family="serif" font-size="12" fill="#7c3aed" opacity="0.6">CARD</text>
+  
+  <!-- 装飾的な星 -->
+  <g opacity="0.4">
+    <path d="M50 50 L52 56 L58 56 L53 60 L55 66 L50 62 L45 66 L47 60 L42 56 L48 56 Z" fill="#8b5cf6"/>
+    <path d="M150 50 L152 56 L158 56 L153 60 L155 66 L150 62 L145 66 L147 60 L142 56 L148 56 Z" fill="#8b5cf6"/>
+    <path d="M50 250 L52 256 L58 256 L53 260 L55 266 L50 262 L45 266 L47 260 L42 256 L48 256 Z" fill="#8b5cf6"/>
+    <path d="M150 250 L152 256 L158 256 L153 260 L155 266 L150 262 L145 266 L147 260 L142 256 L148 256 Z" fill="#8b5cf6"/>
+  </g>
+</svg> 
