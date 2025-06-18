@@ -1,0 +1,55 @@
+{
+  "name": "タロット鑑定支援アプリ",
+  "description": "AIを活用した恋愛テーマ特化型タロット鑑定ツール",
+  "version": "1.0.0",
+  "author": "Tarot Reading Assistant Team",
+  "keywords": [
+    "tarot",
+    "fortune-telling",
+    "ai",
+    "gemini",
+    "love",
+    "divination",
+    "react",
+    "typescript"
+  ],
+  "features": [
+    "恋愛テーマ特化型鑑定",
+    "スリーカードスプレッド",
+    "AI鑑定文生成",
+    "ランダム・手動カード選択",
+    "複数スタンス対応",
+    "コピー機能",
+    "再生成機能",
+    "レスポンシブデザイン"
+  ],
+  "supportedCards": [
+    "愚者", "魔術師", "女教皇", "女帝", "皇帝",
+    "教皇", "恋人", "戦車", "力", "隠者",
+    "運命の輪", "正義", "吊るされた男", "死神", "節制",
+    "悪魔", "塔", "星", "月", "太陽",
+    "審判", "世界"
+  ],
+  "stances": [
+    {
+      "id": "supportive",
+      "name": "寄り添い・共感",
+      "description": "相談者の気持ちに寄り添い、優しく導くスタイル"
+    },
+    {
+      "id": "realistic",
+      "name": "辛口・現実的",
+      "description": "現実を直視し、厳しい真実も伝えるスタイル"
+    },
+    {
+      "id": "mystical",
+      "name": "神秘的・スピリチュアル",
+      "description": "宇宙のエネルギーや運命の流れを重視するスタイル"
+    },
+    {
+      "id": "practical",
+      "name": "実践的・アドバイス重視",
+      "description": "具体的な行動指針や解決策を提示するスタイル"
+    }
+  ]
+} 
