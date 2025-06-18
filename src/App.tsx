@@ -35,8 +35,8 @@ function App() {
 
   // APIキーの初期化
   useEffect(() => {
-    // APIキーが正常確認されたため、初期化を有効化
-    const apiKey = 'AIzaSyC7aZdqlIF7zwIQvfss7STUebsKj0qpMU4';
+    // 環境変数からAPIキーを取得
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY || 'AIzaSyC7aZdqlIF7zwIQvfss7STUebsKj0qpMU4';
     if (!apiKey) {
       setApiKeyError('APIキーが設定されていません。');
       return;
