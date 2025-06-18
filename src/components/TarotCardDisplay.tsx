@@ -11,8 +11,8 @@ export const TarotCardDisplay: React.FC<TarotCardDisplayProps> = ({
   onCardClick
 }) => {
   const getCardImagePath = (cardId: string): string => {
-    // 画像ファイル名は cardId.jpg の形式を想定（SVGファイルも対応）
-    return `/images/tarot-cards/${cardId}.svg`;
+    // 画像ファイル名は cardId.png の形式を想定（PNG優先）
+    return `/images/tarot-cards/${cardId}.png`;
   };
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -20,10 +20,10 @@ export const TarotCardDisplay: React.FC<TarotCardDisplayProps> = ({
     const target = e.target as HTMLImageElement;
     const currentSrc = target.src;
     
-    if (currentSrc.includes('.svg')) {
+    if (currentSrc.includes('.png')) {
+      target.src = currentSrc.replace('.png', '.svg');
+    } else if (currentSrc.includes('.svg')) {
       target.src = currentSrc.replace('.svg', '.jpg');
-    } else if (currentSrc.includes('.jpg')) {
-      target.src = currentSrc.replace('.jpg', '.png');
     } else {
       target.src = '/images/tarot-cards/placeholder.svg';
     }
